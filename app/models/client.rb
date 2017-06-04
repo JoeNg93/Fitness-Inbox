@@ -3,6 +3,9 @@ class Client < ApplicationRecord
   # BEFORE ACTIONS
   before_save :downcase_email
 
+  # RELATIONSHIPS
+  has_many :unread_messages, -> { Message.unread }, class_name: 'Message', foreign_key: 'receiver_id'
+
   # VALIDATES
   validates :name, presence: true, length: { maximum: 50 }
 
@@ -15,6 +18,11 @@ class Client < ApplicationRecord
 
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
+
+  def self.digest(string)
+    cost = ActiveModel::SecurePassword.min_cost ? BCrypt::Engine::MIN_COST : BCrypt::Engine.cost
+    BCrypt::Password.create(string, cost: cost)
+  end
 
   private
 

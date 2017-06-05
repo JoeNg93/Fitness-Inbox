@@ -22,6 +22,7 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
   test 'should get status 404 with invalid id' do
     get client_path(id: 10)
     assert_response :missing
+    assert_equal response.content_type, 'application/json'
     client = JSON.parse(response.body)
     assert client.empty?
   end

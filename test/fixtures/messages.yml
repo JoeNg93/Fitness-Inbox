@@ -1,13 +1,37 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
-one:
-  content: MyText
-  sender_id: 1
-  receiver_id: 1
-  read: false
+message_john_robert:
+  content: "Hi Robert! It's John"
+  sender: clients(:john)
+  receiver: clients(:robert)
+  read: true
 
-two:
-  content: MyText
-  sender_id: 1
-  receiver_id: 1
-  read: false
+message_john_mark:
+  content: "Hi Mark! It's John"
+  sender: clients(:john)
+  receiver: clients(:mark)
+  read: true
+
+message_robert_john:
+  content: "Hi John! It's Robert"
+  sender: clients(:robert)
+  receiver: clients(:john)
+  read: true
+
+message_robert_mark:
+  content: "Hi Mark! It's Robert"
+  sender: clients(:robert)
+  receiver: clients(:mark)
+  read: true
+
+message_mark_john:
+  content: "Hi John! It's Mark"
+  sender: clients(:mark)
+  receiver: clients(:john)
+  read: true
+
+message_mark_robert:
+  content: "Hi Robert! It's Mark"
+  sender: clients(:mark)
+  receiver: clients(:robert)
+  read: true

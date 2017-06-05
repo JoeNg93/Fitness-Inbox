@@ -12,7 +12,7 @@ class ClientsController < ApplicationController
       @client.save
       render json: @client
     else
-      render status: 400
+      render json: {error: 'Client information is invalid'}, status: 400
     end
   end
 
@@ -29,7 +29,7 @@ class ClientsController < ApplicationController
     begin
       @client = Client.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-      render json: {}, status: 404 and return
+      render json: {error: 'Client not found'}, status: 404 and return
     end
   end
 

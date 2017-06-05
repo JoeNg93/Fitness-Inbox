@@ -6,4 +6,9 @@ Rails.application.routes.draw do
     resources :messages, only: [:index, :create, :show]
   end
 
+  post '/login', to: 'sessions#login'
+  post '/logout', to: 'sessions#logout'
+
+  get '/authenticate', to: 'sessions#authenticate'
+
 end

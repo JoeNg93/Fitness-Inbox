@@ -24,7 +24,7 @@ class MessagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :missing
     assert_equal response.content_type, 'application/json'
     message = JSON.parse(response.body)
-    assert message.empty?
+    assert_not message['error'].nil?
   end
 
   test 'should post new message successfully with valid params' do

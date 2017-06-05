@@ -15,7 +15,7 @@ class MessagesController < ApplicationController
       @message.save
       render json: @message
     else
-      render status: 400
+      render json: {error: 'Message is invalid'}, status: 400
     end
   end
 
@@ -24,7 +24,7 @@ class MessagesController < ApplicationController
     begin
       @message = Message.find(params[:id])
     rescue ActiveRecord::RecordNotFound
-      render json: {},status: 404 and return
+      render json: {error: 'Message not found'},status: 404 and return
     end
   end
 

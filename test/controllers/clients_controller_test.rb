@@ -24,7 +24,7 @@ class ClientsControllerTest < ActionDispatch::IntegrationTest
     assert_response :missing
     assert_equal response.content_type, 'application/json'
     client = JSON.parse(response.body)
-    assert client.empty?
+    assert_not client['error'].nil?
   end
 
   test 'should post a user successfully with valid params' do

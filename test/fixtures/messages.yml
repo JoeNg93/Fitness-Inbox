@@ -2,36 +2,36 @@
 
 message_john_robert:
   content: "Hi Robert! It's John"
-  sender: clients(:john)
-  receiver: clients(:robert)
+  sender_id: <%= Client.find_by(name: 'John').id %>
+  receiver_id: <%= Client.find_by(name: 'Robert').id %>
   read: true
 
 message_john_mark:
   content: "Hi Mark! It's John"
-  sender: clients(:john)
-  receiver: clients(:mark)
+  sender_id: <%= Client.find_by(name: 'John').id %>
+  receiver_id: <%= Client.find_by(name: 'Mark').id %>
   read: true
 
 message_robert_john:
   content: "Hi John! It's Robert"
-  sender: clients(:robert)
-  receiver: clients(:john)
+  sender_id: <%= Client.find_by(name: 'Robert').id %>
+  receiver_id: <%= Client.find_by(name: 'John').id %>
   read: true
 
 message_robert_mark:
   content: "Hi Mark! It's Robert"
-  sender: clients(:robert)
-  receiver: clients(:mark)
+  sender_id: <%= Client.find_by(name: 'Robert').id %>
+  receiver_id: <%= Client.find_by(name: 'Mark').id %>
   read: true
 
 message_mark_john:
   content: "Hi John! It's Mark"
-  sender: clients(:mark)
-  receiver: clients(:john)
+  sender_id: <%= Client.find_by(name: 'Mark').id %>
+  receiver_id: <%= Client.find_by(name: 'John').id %>
   read: true
 
 message_mark_robert:
   content: "Hi Robert! It's Mark"
-  sender: clients(:mark)
-  receiver: clients(:robert)
+  sender_id: <%= Client.find_by(name: 'Mark').id %>
+  receiver_id: <%= Client.find_by(name: 'Robert').id %>
   read: true

@@ -11,8 +11,7 @@ class MessagesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test 'should get a single message with GET /messages/:id when id is valid' do
-    message = messages(:message_robert_john)
-    puts message.sender
+    message = messages(:message_john_robert)
     get message_url(message)
     assert_response :success
     assert_equal response.content_type, 'application/json'
@@ -49,6 +48,15 @@ class MessagesControllerTest < ActionDispatch::IntegrationTest
       post messages_url, params: { message: { content: '' } }
     end
     assert_response(400)
+  end
+
+  test 'should get a list of messages correspond to a user' do
+    user = clients(:robert)
+    get get_message_url(user)
+    assert_response :success
+    assert_equal response.content_type, 'application/json'
+    messages = JSON.parse(response.body)
+    assert_equal Message.where('sender_id = :id OR receiver_id = :id', id: user.id).count, messages.length
   end
 
 end

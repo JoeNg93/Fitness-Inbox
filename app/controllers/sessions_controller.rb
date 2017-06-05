@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+  skip_before_action :verify_authenticity_token
 
   def login
     @user = Client.find_by(email: params[:client][:email].downcase)
@@ -6,7 +7,7 @@ class SessionsController < ApplicationController
       cookies.permanent.signed[:user_id] = @user.id
       render json: @user
     else
-      render json: {error: 'Wrong email or password'}, status: 401
+      render json: { error: 'Wrong email or password' }, status: 401
     end
   end
 
@@ -15,7 +16,7 @@ class SessionsController < ApplicationController
       cookies.delete(:user_id)
       render json: {}, status: 200
     else
-      render json: {error: "You're not logged in"}, status: 401
+      render json: { error: "You're not logged in" }, status: 401
     end
   end
 

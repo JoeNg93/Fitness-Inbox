@@ -1,0 +1,15 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.home-without-login {
+  .row {
+    margin-top: 20px;
+    a {
+      width: 100%;
+    }
+  }
+}
+
+.textBold {
+  font-weight: bold;
+}

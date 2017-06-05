@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="row">
+    <div class="col-sm-12 text-center">
+      <h1>LOGIN</h1>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6 col-md-offset-3 col-sm-12">
+      <form ng-submit="login(client)" name="loginForm">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" class="form-control" name="email" ng-required="true" ng-model="client.email">
+          <span class="text-danger" ng-show="loginForm.email.$dirty && loginForm.email.$error.required">Email is required</span>
+          <span class="text-danger" ng-show="loginForm.email.$dirty && loginForm.email.$error.email">Email is not valid</span>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" class="form-control" id="password" name="password" ng-required="true" ng-model="client.password">
+          <span class="text-danger" ng-show="loginForm.password.$dirty && loginForm.password.$error.required">Password is required</span>
+        </div>
+        <div class="form-group">
+          <span class="text-danger" ng-show="loginForm.$error.authentication">Wrong username or password</span>
+        </div>
+        <button type="submit" ng-disabled="loginForm.$invalid" class="btn btn-primary" style="width: 100%">Login</button>
+      </form>
+    </div>
+  </div>
+</div>

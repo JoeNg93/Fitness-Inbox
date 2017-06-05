@@ -8,6 +8,13 @@
 
 Client.create(name: 'Joe', email: 'ntuandung93@gmail.com', role: 'user', password: 'foobar', password_confirmation: 'foobar')
 Client.create(name: 'Robert', email: 'hihihaha@gmail.com', role: 'user', password: 'foobar', password_confirmation: 'foobar')
+Client.create(name: 'Mark', email: 'marktheman@gmail.com', role: 'trainer', password: 'foobar', password_confirmation: 'foobar')
 
-Message.create(content: 'Hii', sender_id: Client.first.id, receiver_id: Client.second.id)
+Message.create(content: "Hi Robert! It's Joe", sender_id: Client.find_by(name: 'Joe').id, receiver_id: Client.find_by(name: 'Robert').id)
+Message.create(content: "Hi Mark! It's Joe", sender_id: Client.find_by(name: 'Joe').id, receiver_id: Client.find_by(name: 'Mark').id)
 
+Message.create(content: "Hi Joe! It's Robert", sender_id: Client.find_by(name: 'Robert').id, receiver_id: Client.find_by(name: 'Joe').id)
+Message.create(content: "Hi Mark! It's Robert", sender_id: Client.find_by(name: 'Robert').id, receiver_id: Client.find_by(name: 'Mark').id)
+
+Message.create(content: "Hi Joe! It's Mark", sender_id: Client.find_by(name: 'Mark').id, receiver_id: Client.find_by(name: 'Joe').id)
+Message.create(content: "Hi Robert! It's Mark", sender_id: Client.find_by(name: 'Mark').id, receiver_id: Client.find_by(name: 'Robert').id)

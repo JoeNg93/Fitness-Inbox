@@ -1,0 +1,53 @@
+<div class="container home-without-login" ng-hide="user">
+  <div class="text-center">
+    <div class="row">
+      <div class="col-sm-12">
+        <h2>Please login to start sending messages for trainers and users around the world</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 col-sm-12">
+        <a class="btn btn-primary" ui-sref="login">Login Now</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <h3>Don't have account? Signup now</h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3 col-sm-12">
+        <a class="btn btn-success" ui-sref="signup">Signup Now</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container home-with-login" ng-show="user">
+  <div class="text-center">
+    <div class="row">
+      <div class="col-sm-12">
+        <h2>Welcome back, {{ user.name }}</h2>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12">
+        <h4>You have {{ user.unread_messages.length }} unread messages</h4>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 text-center">
+        <ul style="list-style-type: none">
+          <li ng-repeat="message in user.unread_messages">
+            <h5>{{  }}</h5>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-sm-12 col-md-6 col-md-offset-3">
+        <a ui-sref="chat" class="btn btn-danger" style="width: 100%">Inbox</a>
+      </div>
+    </div>
+  </div>
+</div>

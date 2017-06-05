@@ -1,13 +1,33 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title>FitsmindTestBackend</title>
-    <%= csrf_meta_tags %>
+<html ng-app="myApp">
+<head>
+  <title>FitsmindTestBackend</title>
+  <%= csrf_meta_tags %>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <%= stylesheet_link_tag    'application', media: 'all' %>
-  </head>
+  <%= stylesheet_link_tag 'application', media: 'all' %>
 
-  <body>
-    <%= yield %>
-  </body>
+  <base href="/">
+</head>
+
+<body>
+<nav class="navbar navbar-inverse" ng-controller="navBarCtrl">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="/" style="font-size: 23px;">Home</a>
+    </div>
+    <ul class="nav navbar-nav navbar-right" ng-show="user">
+      <li><a href="#" ng-click="signout()" style="font-size: 20px;">Sign out</a></li>
+    </ul>
+  </div><!-- /.container-fluid -->
+</nav>
+<div ui-view></div>
+<%= javascript_pack_tag 'application' %>
+<script
+src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+integrity="sha256-k2WSCIexGzOj3Euiig+TlR8gA0EmPjuc79OEeY5L45g="
+crossorigin="anonymous"></script>
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+</body>
 </html>

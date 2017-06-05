@@ -1,0 +1,31 @@
+<div class="container">
+  <div class="col-md-4 col-sm-12" style="margin-top: 10%;">
+    <a ui-sref="new_message" class="btn btn-danger" style="width: 100%">New Message</a>
+    <br>
+    <br>
+    <div class="panel panel-primary">
+      <div class="panel-heading">Chatbox</div>
+      <div class="panel-body">
+        <ul class="list-group">
+          <li ng-repeat="chatter in chatters" class="list-group-item"
+              ng-class="{textBold: hasUnreadMessagesWith(chatter)}">
+
+            <a href="#" class="list-group-item" ng-click="getConversationWith(chatter)">
+              <span class="badge"
+                    ng-show="hasUnreadMessagesWith(chatter)">{{ numOfUnreadMessagesWith(chatter) }} unread</span>
+              Chat with {{ chatter.name }} ({{ chatter.role }})
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6 col-sm-12">
+    <h1 class="text-center">Messages</h1>
+    <br>
+    <br>
+    <h4 ng-repeat="message in currentConversation" style="border: 1px solid red; padding: 20px; margin-bottom: 20px; ">
+      {{ message.sender.name == user.name ? 'You' : message.sender.name }}: {{ message.content }}
+    </h4>
+  </div>
+</div>

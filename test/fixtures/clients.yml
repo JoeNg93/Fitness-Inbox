@@ -2,12 +2,18 @@
 
 john:
   name: John
-  email: nghitrum@gmail.com
+  email: nghitrum@example.com
   role: user
   password_digest: <%= Client.digest('password') %>
 
 robert:
   name: Robert
-  email: robertiv@gmail.com
+  email: robertiv@example.com
+  role: user
+  password_digest: <%= Client.digest('password') %>
+
+mark:
+  name: Mark
+  email: marktheman@example.com
   role: user
   password_digest: <%= Client.digest('password') %>

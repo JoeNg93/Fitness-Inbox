@@ -8,10 +8,8 @@ const homeCtrl = ['$scope', '$http', '$state', 'userState', '$rootScope', functi
         $scope.user = response.data;
         userState.currentUser = $scope.user;
         $rootScope.$broadcast('User authenticated');
-        console.log(_.groupBy($scope.user.unread_messages, 'content'));
       })
       .catch((err) => {
-        console.log(err);
       });
   }
 

@@ -26,7 +26,6 @@ const chatCtrl = ['$scope', '$http', '$state', 'userState', '$rootScope', functi
         $scope.messages = response.data;
         let current_user_id = userState.currentUser.id;
         $scope.chatters = getChattersOf(current_user_id, $scope.messages);
-
         userState.currentChatter && $scope.getConversationWith(userState.currentChatter);
         userState.currentChatter = null;
       });
@@ -58,7 +57,8 @@ const chatCtrl = ['$scope', '$http', '$state', 'userState', '$rootScope', functi
 
 function getChattersOf(user_id, messages) {
   let sendersOfEachMessage = messages.map(message => message.sender);
-  return _.uniqBy(sendersOfEachMessage, 'id').filter(sender => sender.id !== user_id);
+  let receiversOfEachMessage = messages.map(message => message.receiver);
+  return _.uniqBy(sendersOfEachMessage.concat(receiversOfEachMessage), 'id').filter(sender => sender.id !== user_id);
 }
 
 export default chatCtrl;

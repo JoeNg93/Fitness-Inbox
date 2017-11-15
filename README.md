@@ -1,3 +1,7 @@
+# Mail inbox app
+
+Simple app that helps trainers and users all around the world register and send messages to each other.
+
 # Technologies
 
 + Rails as back-end server, mostly acts as REST API
